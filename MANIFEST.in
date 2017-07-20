@@ -1,0 +1,8 @@
+graft flasktemplate/templates
+graft flasktemplate/static
+include flasktemplate/sql/schema.sql
+
+include *.txt
+include *.rst
+recursive-include docs *.rst
+

@@ -1,0 +1,9 @@
+*.pyc
+.cache
+.eggs
+build
+dist
+*.egg-info
+logs
+*.log
+.python-version

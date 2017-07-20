@@ -1,0 +1,54 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+
+    "formatters": {
+        "simple": {
+            "format": "%(levelname)s;%(asctime)s; %(name)s; %(message)s [in %(pathname)s:%(lineno)d]"
+        },
+        "colored": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s%(levelname)s%(reset)s;%(asctime)s; %(name)s; %(message)s"
+        }
+    },
+
+    "handlers": {
+        "stream_handler": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "colored",
+            "stream": "ext://sys.stdout"
+
+        },
+        "rotating_file_handler": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "filename": "main.log",
+            "when": "midnight",
+            "backupCount": 20,
+            "encoding": "utf-8"
+        },
+
+        "basic_file_handler":{
+            "class": "logging.FileHandler",
+            "level": "ERROR",
+            "formatter": "simple",
+            "filename": "error.log",
+            "mode" : "w",
+            "encoding": "utf-8"
+        }
+    },
+
+    "loggers": {
+        "__main__": {
+            "level": "DEBUG",
+            "propagate": "no"
+        }
+    },
+
+    "root": {
+        "level": "NOTSET",
+        "handlers": ["stream_handler", "basic_file_handler", "rotating_file_handler"]
+    }
+}

@@ -1,0 +1,1 @@
+from .flasktemplate import app
